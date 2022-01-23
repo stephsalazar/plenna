@@ -54,7 +54,9 @@ const App = () => {
         <Route path="/consult">
           <Consult patient={patient} />
         </Route> 
-        <Route path="/closing" component={Closing} />
+        <Route path="/closing">
+          <Closing name={patient.name} />
+        </Route> 
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
