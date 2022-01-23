@@ -1,8 +1,7 @@
 import '../styles/common.css';
 import '../styles/form.css';
 
-const Form = props => {
-  
+const Form = () => {
   return (
     <section>
       <h2>Formulario de consulta</h2>
