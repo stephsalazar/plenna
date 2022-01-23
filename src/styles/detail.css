@@ -1,0 +1,22 @@
+details {
+  border: 1px solid #712045;
+  border-radius: 8px;  
+  color: #712045;
+  cursor: pointer;
+  margin-bottom: 1rem;   
+  width: 100%;
+}
+
+details summary {  
+  font-weight: 400;
+  font-size: 1.25rem;
+  padding: 1rem;
+  list-style: none;
+}
+
+details p {
+  padding: 1rem;
+  margin: 0 1rem 1rem 1rem;
+  background: white;
+  border-left: 2px solid #712045;
+}

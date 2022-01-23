@@ -1,0 +1,29 @@
+
+.button {
+  background-color: #712045;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 5% 0%;
+  padding: 1rem;
+}
+
+.split-view {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+}
+
+.profile {
+  flex-basis: 35%;
+  font-size: 1.2em;
+  margin: 2% 0 0 2%;
+}
+
+.info {
+  flex-basis: 65%;
+  font-size: 1.2em;
+  padding-right: 2%;
+}
