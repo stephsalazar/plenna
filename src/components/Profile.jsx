@@ -1,5 +1,5 @@
 import patientImage from '../assets/images/patient.jpeg';
-import '../styles/detail.css';
+import '../styles/common.css';
 
 const Profile = props => {
   const {
