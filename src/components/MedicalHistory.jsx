@@ -8,7 +8,7 @@ const MedicalHistory = props => {
         visits.map((visit, i) => (
           <details key={i}>
             <summary>{visit.date}</summary>
-            <p>{visit.resume}</p>
+            <p>{visit.resume.diagnostic}</p>
           </details>
         ))
       }
