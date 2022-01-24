@@ -1,6 +1,14 @@
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
 
 const db = getFirestore();
+const patientRef = doc(db, 'patient', 'rxAXRuf8b76rmwaMoXUO');
 
 const getData = async () => {
   const querySnapshot = await getDocs(collection(db, "patient"));
@@ -11,5 +19,10 @@ const getData = async () => {
   return patientData;
 }
 
+const saveData = async (data) => {
+  await updateDoc(patientRef, {
+    medicalHistory: arrayUnion(data)
+  });
+}
 
-export default getData;
+export { getData, saveData };
