@@ -1,0 +1,15 @@
+.login {
+  text-align: center;
+  margin-top: 5em;
+}
+
+input {
+  border: 1px solid #712045;
+  border-radius: 8px;  
+  color: #712045;
+  cursor: pointer;
+  margin-top: 2rem;   
+  width: 30%;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
