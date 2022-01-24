@@ -1,63 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 import { AuthContext } from "./utils/context/AuthContext";
+import getData from './utils/firebase/firestore';
 import LogIn from './pages/LogIn';
 import Detail from './pages/Detail';
 import Consult from './pages/Consult';
 import Closing from './pages/Closing';
 import NotFound from './pages/NotFound';
+import Loader from "./components/Loader";
 
-const patient = {
-  isLogged: true,
-  name: 'Verónica Guzmán',
-  age: 32,
-  weight: 55.200,
-  height: 152,
-  allergies: 'Penicilina',
-  medicalHistory: [
-    {
-      date: '12 / Octubre / 2021',
-      resume: 'Consulta Básica',
-    },
-    {
-      date: '20 / Diciembre / 2021',
-      resume: 'Papanicolau',
-    },
-    {
-      date: '15 / Enero / 2022',
-      resume: 'Revisión DIU',
-    },
-  ],
-  nextVisits: [
-    {
-      date: '25 / Marzo / 2022',
-      resume: 'Lectura de estudios',
-    },
-    {
-      date: '12 / Mayo / 2022',
-      resume: 'Retiro del DIU',
-    },
-  ],
-};
 
 const App = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getData()
+      .then(result => {
+        setData([...result]);
+      });
+  }, []);
+
   return (
     <AuthContext>
       <Router>
         <Switch>
           <Route exact path="/" component={LogIn} />
           <Route exact path="/detail">
-            <Detail patient={patient} />
+            {
+              data.length
+              ? (<Detail patient={data[0]} />)
+              : (<Loader />)
+            } 
           </Route> 
           <Route exact path="/consult">
-            <Consult patient={patient} />
+          {
+              data.length
+              ? (<Consult patient={data[0]} />)
+              : (<Loader />)
+            } 
           </Route> 
           <Route exact path="/closing">
-            <Closing name={patient.name} />
+            {
+              data.length
+              ? (<Closing name={data[0].name} />)
+              : (<Loader />)
+            } 
           </Route> 
           <Route path="*" component={NotFound} />
         </Switch>
