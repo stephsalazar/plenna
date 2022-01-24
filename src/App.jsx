@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { AuthContext } from "./utils/context/AuthContext";
-import getData from './utils/firebase/firestore';
+import { getData } from './utils/firebase/firestore';
 import LogIn from './pages/LogIn';
 import Detail from './pages/Detail';
 import Consult from './pages/Consult';
