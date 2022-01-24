@@ -4,7 +4,8 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Login from './pages/Login';
+import { AuthContext } from "./utils/context/AuthContext";
+import LogIn from './pages/LogIn';
 import Detail from './pages/Detail';
 import Consult from './pages/Consult';
 import Closing from './pages/Closing';
@@ -45,21 +46,23 @@ const patient = {
 
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route path="/detail">
-          <Detail patient={patient} />
-        </Route> 
-        <Route path="/consult">
-          <Consult patient={patient} />
-        </Route> 
-        <Route path="/closing">
-          <Closing name={patient.name} />
-        </Route> 
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </Router>
+    <AuthContext>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={LogIn} />
+          <Route exact path="/detail">
+            <Detail patient={patient} />
+          </Route> 
+          <Route exact path="/consult">
+            <Consult patient={patient} />
+          </Route> 
+          <Route exact path="/closing">
+            <Closing name={patient.name} />
+          </Route> 
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </Router>
+    </AuthContext>
   );
 }
 
